@@ -21,6 +21,7 @@ class HelloB extends HelloA {
 
     public static void main(String[] args) {
         new HelloB();
+        System.out.println("ni hao");
     }
 
     //对象的初始化顺序：（1）类加载之后，按从上到下（从父类到子类）执行被static修饰的语句；
