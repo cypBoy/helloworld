@@ -1,30 +1,33 @@
-class HelloA {
-
-    public HelloA() {
-        System.out.println("HelloA");
+class Father{
+    public void func1(){
+        func2();
     }
-
-    { System.out.println("I'm A class"); }
-
-    static { System.out.println("static A"); }
-
+    //这是父类中的func2()方法，因为下面的子类中重写了该方法
+    //所以在父类类型的引用中调用时，这个方法将不再有效
+    //取而代之的是将调用子类中重写的func2()方法
+    public void func2(){
+        System.out.println("AAA");
+    }
 }
 
-class HelloB extends HelloA {
-    public HelloB() {
-        System.out.println("HelloB");
+class Child extends Father{
+    //func1(int i)是对func1()方法的一个重载，主要不是重写！
+    //由于在父类中没有定义这个方法，所以它不能被父类类型的引用调用
+    //所以在下面的main方法中child.func1(68)是不对的
+    public void func1(int i){
+        System.out.println("BBB");
     }
+    //func2()重写了父类Father中的func2()方法
+    //如果父类类型的引用中调用了func2()方法，那么必然是子类中重写的这个方法
+    public void func2(){
+        System.out.println("CCC");
+    }
+}
 
-    { System.out.println("I'm B class"); }
-
-    static { System.out.println("static B"); }
-
+public class hello {
     public static void main(String[] args) {
-        new HelloB();
-        System.out.println("ni hao");
+        Father child = new Child();
+        child.func1();//打印结果将会是什么？
+        //child.func1(68);
     }
-
-    //对象的初始化顺序：（1）类加载之后，按从上到下（从父类到子类）执行被static修饰的语句；
-    // （2）当static语句执行完之后,再执行main方法；
-    // （3）如果有语句new了自身的对象，将从上到下执行构造代码块、构造器（两者可以说绑定在一起）。
 }
