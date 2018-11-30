@@ -27,6 +27,7 @@ class Child extends Father{
 public class hello {
     public static void main(String[] args) {
         Father child = new Child();
+        System.out.println("ni hao");
         child.func1();//打印结果将会是什么？
         //child.func1(68);
     }
