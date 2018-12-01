@@ -1,4 +1,4 @@
-class Father{
+﻿class Father{
     public void func1(){
         func2();
     }
@@ -30,5 +30,6 @@ public class hello {
         System.out.println("ni hao");
         child.func1();//打印结果将会是什么？
         //child.func1(68);
+        System.out.println("你好！")；
     }
 }
